@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { UserData } from '../../interfaces/user.interface';
@@ -16,7 +16,7 @@ import { UsersService } from '../../services/users.service';
     ]),
   ],
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -25,7 +25,11 @@ export class TableComponent implements OnInit {
   displayedColumns: string[] = [];
   dataSource: MatTableDataSource<UserData>;
 
-  constructor(private usersService: UsersService) {
+  constructor(private usersService: UsersService) { }
+
+  ngOnInit() { }
+
+  ngAfterViewInit() {
     this.usersService.getUsers().subscribe(
       (res) => {
         this.users = res;
@@ -36,12 +40,7 @@ export class TableComponent implements OnInit {
       });
   }
 
-  ngOnInit() {
-  }
-
   applyFilter(filterValue: string) {
-    console.log(filterValue);
-
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
     if (this.dataSource.paginator) {
