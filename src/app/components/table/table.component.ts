@@ -23,7 +23,6 @@ export class TableComponent implements OnInit {
 
   users: any;
   displayedColumns: string[] = [];
-  expandedElement: UserData | null;
   dataSource: MatTableDataSource<UserData>;
 
   constructor(private usersService: UsersService) {
