@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { UserData } from '../../interfaces/user.interface';
-import { UsersService } from 'src/app/services/users.service';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-table',
