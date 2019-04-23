@@ -1,0 +1,3 @@
+<mat-form-field class="pt-3 pb-0 px-4">
+  <input matInput [(ngModel)]="searchString" (keyup)="emitSearchString.emit(searchString)" placeholder="Filter">
+</mat-form-field>
